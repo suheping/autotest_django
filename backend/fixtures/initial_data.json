@@ -1,0 +1,47 @@
+[
+  {
+    "model": "backend.ApiGroup",
+    "pk": 1,
+    "fields": {
+      "projId": 1,
+      "apiGroupJson": [
+        {
+          "id": 1,
+          "apiGroupName": "默认分组",
+          "isEdit": 0,
+          "children": [
+            {
+              "id": 2,
+              "apiGroupName": "默认分组-1",
+              "isEdit": 0
+            },
+            {
+              "id": 3,
+              "apiGroupName": "默认分组-2",
+              "isEdit": 0
+            }
+          ]
+        },
+        {
+          "id": 4,
+          "apiGroupName": "分组1",
+          "isEdit": 0,
+          "children": [
+            {
+              "id": 5,
+              "apiGroupName": "分组1-1",
+              "isEdit": 0,
+              "children": [
+                {
+                  "id": 6,
+                  "apiGroupName": "分组1-1-1",
+                  "isEdit": 0
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]
