@@ -22,4 +22,6 @@ urlpatterns = [
     path('', views.index),
     path('getApiGroup/<int:projId>/', views.getApiGroup),
     path('updateApiGroup/<int:projId>/', views.updateApiGroup),
+    path('getApi/<int:projId>/<int:apiGroupId>/', views.getApi),
+    path('updateApi/<int:projId>/<int:apiGroupId>/<int:id>/', views.updateApi),
 ]

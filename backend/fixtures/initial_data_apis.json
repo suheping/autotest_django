@@ -1,0 +1,40 @@
+[
+  {
+    "model": "backend.Apis",
+    "pk": 1,
+    "fields": {
+      "projId": 1,
+      "apiGroupId": 1,
+      "apiSortNo": 1,
+      "apiName": "获取接口分组",
+      "apiPath": "/getApiGroup",
+      "apiProtocol": "http",
+      "apiMethod": "get",
+      "apiHeaders": {},
+      "apiQuerys": {
+        "projId": 1
+      },
+      "apiBody": {},
+      "apiResp": {}
+    }
+  },
+  {
+    "model": "backend.Apis",
+    "pk": 2,
+    "fields": {
+      "projId": 1,
+      "apiGroupId": 1,
+      "apiSortNo": 2,
+      "apiName": "获取接口分组1",
+      "apiPath": "/getApiGroup",
+      "apiProtocol": "http",
+      "apiMethod": "get",
+      "apiHeaders": {},
+      "apiQuerys": {
+        "projId": 1
+      },
+      "apiBody": {},
+      "apiResp": {}
+    }
+  }
+]

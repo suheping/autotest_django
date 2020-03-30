@@ -1,7 +1,9 @@
 from django.http import HttpResponse
 import json
 import urllib
-from backend.models import ApiGroup
+from backend.models import ApiGroup, Apis
+from django.forms.models import model_to_dict
+from django.core import serializers
 
 # 首页
 
@@ -11,9 +13,14 @@ def index(request):
 
 
 def getApiGroup(request, projId):
+    '''获取接口分组
+    '''
     # 返回的的是dict
     apiGroupRes = ApiGroup.objects.filter(
         projId=projId).values('apiGroupJson').first()
+    # apiGroupRes = ApiGroup.objects.get(projId=projId)
+    # print(apiGroupRes)
+    # print(type(apiGroupRes))
     # 取到dict中apiGroupJson字段的值，并且把'替换为"
     # apiGroupStr为str
     apiGroupStr = apiGroupRes['apiGroupJson'].replace("'", '"')
@@ -23,15 +30,50 @@ def getApiGroup(request, projId):
     print(apiGroupDict)
     # 将apiGroupDict从dict转为json格式的字符串
     apiGroupJson = json.dumps(apiGroupDict, ensure_ascii=False)
+    print(apiGroupJson)
+    print(type(apiGroupJson))
     return HttpResponse(apiGroupJson, content_type="application/json")
 
 
 def updateApiGroup(request, projId):
+    '''更新接口分组
+    '''
     if request.method == 'POST':
         # request.body 为bytes，需要转为str并且将unicode转为utf8
         apiGroupStr = str(request.body, encoding="utf-8")
         apiGroupDict = json.loads(apiGroupStr)
         ApiGroup.objects.filter(projId=projId).update(
             apiGroupJson=apiGroupDict)
+        res = [{'code': 1000, 'msg': 'success'}]
+        return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
+
+
+def getApi(request, projId, apiGroupId):
+    '''获取接口分组下的接口
+    '''
+    # 返回QuerySet对象，多条记录
+    apisRes = Apis.objects.filter(
+        projId=projId, apiGroupId=apiGroupId).values()
+    # print(apisRes)
+    # QuerySet对象转为list
+    apisList = list(apisRes)
+    # print(apisList)
+    print(apisList)
+    # list转为str
+    # '替换为"，再去掉{}两侧的"
+    apisStr = str(apisList).replace("'", '"').replace(
+        '"{', '{').replace('}"', '}')
+    # print(apisStr)
+    # str转为dict
+    apisDict = json.loads(apisStr)
+    # dict转为json
+    apisJson = json.dumps(apisDict, ensure_ascii=False)
+    print(apisJson)
+    return HttpResponse(apisJson, content_type="application/json")
+
+
+def updateApi(request, projId, apiGroupId, id):
+    if request.method == 'POST':
+
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
