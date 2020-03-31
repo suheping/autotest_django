@@ -52,8 +52,10 @@ def getApi(request, projId, apiGroupId):
     '''获取接口分组下的接口
     '''
     # 返回QuerySet对象，多条记录
+    # apisRes = Apis.objects.filter(
+    #     projId=projId, apiGroupId=apiGroupId).values()
     apisRes = Apis.objects.filter(
-        projId=projId, apiGroupId=apiGroupId).values()
+        projId=projId, apiGroupId=apiGroupId).order_by('apiSortNo').values()
     # print(apisRes)
     # QuerySet对象转为list
     apisList = list(apisRes)
@@ -72,8 +74,9 @@ def getApi(request, projId, apiGroupId):
     return HttpResponse(apisJson, content_type="application/json")
 
 
-def updateApi(request, projId, apiGroupId, id):
+def updateApi(request):
     if request.method == 'POST':
-
+        apisStr = str(request.body, encoding='utf-8')
+        print(apisStr)
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")

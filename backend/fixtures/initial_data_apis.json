@@ -6,7 +6,7 @@
       "projId": 1,
       "apiGroupId": 1,
       "apiSortNo": 1,
-      "apiName": "获取接口分组",
+      "apiName": "获取接口分组1",
       "apiPath": "/getApiGroup",
       "apiProtocol": "http",
       "apiMethod": "get",
@@ -25,7 +25,45 @@
       "projId": 1,
       "apiGroupId": 1,
       "apiSortNo": 2,
-      "apiName": "获取接口分组1",
+      "apiName": "获取接口分组2",
+      "apiPath": "/getApiGroup",
+      "apiProtocol": "http",
+      "apiMethod": "get",
+      "apiHeaders": {},
+      "apiQuerys": {
+        "projId": 1
+      },
+      "apiBody": {},
+      "apiResp": {}
+    }
+  },
+  {
+    "model": "backend.Apis",
+    "pk": 3,
+    "fields": {
+      "projId": 1,
+      "apiGroupId": 1,
+      "apiSortNo": 100,
+      "apiName": "获取接口分组100",
+      "apiPath": "/getApiGroup",
+      "apiProtocol": "http",
+      "apiMethod": "get",
+      "apiHeaders": {},
+      "apiQuerys": {
+        "projId": 1
+      },
+      "apiBody": {},
+      "apiResp": {}
+    }
+  },
+  {
+    "model": "backend.Apis",
+    "pk": 4,
+    "fields": {
+      "projId": 1,
+      "apiGroupId": 1,
+      "apiSortNo": 105,
+      "apiName": "获取接口分组105",
       "apiPath": "/getApiGroup",
       "apiProtocol": "http",
       "apiMethod": "get",
