@@ -34,5 +34,4 @@ class Apis(models.Model):
     class Meta:
         verbose_name = '接口表'
         # 同项目同一分组下 接口名称唯一
-        unique_together = (("projId", "apiGroupId", "apiName"),
-                           ("projId", "apiGroupId", "apiSortNo"))
+        unique_together = (("projId", "apiGroupId", "apiName"))

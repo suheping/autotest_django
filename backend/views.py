@@ -76,7 +76,14 @@ def getApi(request, projId, apiGroupId):
 
 def updateApi(request):
     if request.method == 'POST':
+        # body为bytes，转为str
         apisStr = str(request.body, encoding='utf-8')
-        print(apisStr)
+        # str转为dict
+        apisDict = eval(apisStr)
+        for i in apisDict:
+            print(i)
+            print(type(i))
+            print(i['apiSortNo'])
+            Apis.objects.filter(id=i['id']).update(**i)
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
