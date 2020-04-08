@@ -24,4 +24,5 @@ urlpatterns = [
     path('updateApiGroup/<int:projId>/', views.updateApiGroup),
     path('getApi/<int:projId>/<int:apiGroupId>/', views.getApi),
     path('updateApi/', views.updateApi),
+    path('addApi/', views.addApi),
 ]

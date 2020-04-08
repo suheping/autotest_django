@@ -60,17 +60,19 @@ def getApi(request, projId, apiGroupId):
     # QuerySet对象转为list
     apisList = list(apisRes)
     # print(apisList)
-    print(apisList)
+    # print(apisList)
     # list转为str
-    # '替换为"，再去掉{}两侧的"
+    # '替换为"，再去掉{}两侧的"，再去掉[]两侧的"
     apisStr = str(apisList).replace("'", '"').replace(
-        '"{', '{').replace('}"', '}')
-    # print(apisStr)
+        '"{', '{').replace('}"', '}').replace('"[', '[').replace(']"', ']')
+    print('apisStr', apisStr)
     # str转为dict
     apisDict = json.loads(apisStr)
+    # apisDict = eval(apisStr)
+    print('apisDict', apisDict)
     # dict转为json
     apisJson = json.dumps(apisDict, ensure_ascii=False)
-    print(apisJson)
+    print('apisJson', apisJson)
     return HttpResponse(apisJson, content_type="application/json")
 
 
@@ -85,5 +87,16 @@ def updateApi(request):
             print(type(i))
             print(i['apiSortNo'])
             Apis.objects.filter(id=i['id']).update(**i)
+        res = [{'code': 1000, 'msg': 'success'}]
+        return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
+
+
+def addApi(request):
+    if request.method == 'POST':
+        apiStr = str(request.body, encoding='utf-8')
+        apiDict = eval(apiStr.replace('\\n', ''))
+        print(apiDict)
+        # 入库
+        Apis.objects.create(**apiDict)
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")

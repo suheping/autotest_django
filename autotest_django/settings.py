@@ -54,12 +54,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 # CORS
-CORS_ORIGIN_WHITELIST = (
-    'http://127.0.0.1:9527',
-    'http://localhost:9527'
-)
-CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = (
+#     'http://127.0.0.1:9527',
+#     'http://localhost:9527'
+# )
+
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
@@ -71,6 +72,7 @@ CORS_ALLOW_METHODS = (
 )
 CORS_ALLOW_HEADERS = (
     'x-token',
+    'content-type',
 )
 
 ROOT_URLCONF = 'autotest_django.urls'

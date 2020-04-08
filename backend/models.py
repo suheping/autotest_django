@@ -4,7 +4,8 @@ from django.db import models
 
 
 class ApiGroup(models.Model):
-    projId = models.IntegerField('项目id', null=False, unique=True)
+    # projId = models.IntegerField('项目id', null=False, unique=True)
+    projId = models.BigIntegerField('项目id', null=False, unique=True)
     apiGroupJson = models.CharField(
         '接口分组信息', null=False, max_length=4096,
         default='[{"id":1,"apiGroupName":"默认分组","isEdit":0}]')
@@ -15,7 +16,8 @@ class ApiGroup(models.Model):
 
 class Apis(models.Model):
     projId = models.IntegerField('项目id', null=False)
-    apiGroupId = models.IntegerField('接口分组id', null=False)
+    # apiGroupId = models.IntegerField('接口分组id', null=False)
+    apiGroupId = models.BigIntegerField('接口分组id', null=False)
     apiSortNo = models.IntegerField('接口排序号', null=False)
     apiName = models.CharField('接口名称', null=False, max_length=64)
     apiPath = models.CharField('接口地址', null=False, max_length=64, default='')
