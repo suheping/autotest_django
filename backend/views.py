@@ -65,14 +65,14 @@ def getApi(request, projId, apiGroupId):
     # '替换为"，再去掉{}两侧的"，再去掉[]两侧的"
     apisStr = str(apisList).replace("'", '"').replace(
         '"{', '{').replace('}"', '}').replace('"[', '[').replace(']"', ']')
-    print('apisStr', apisStr)
+    # print('apisStr', apisStr)
     # str转为dict
     apisDict = json.loads(apisStr)
     # apisDict = eval(apisStr)
-    print('apisDict', apisDict)
+    # print('apisDict', apisDict)
     # dict转为json
     apisJson = json.dumps(apisDict, ensure_ascii=False)
-    print('apisJson', apisJson)
+    print('获取接口：apisJson', apisJson)
     return HttpResponse(apisJson, content_type="application/json")
 
 
@@ -82,10 +82,8 @@ def updateApi(request):
         apisStr = str(request.body, encoding='utf-8')
         # str转为dict
         apisDict = eval(apisStr)
+        print('更新接口：apisDict', apisDict)
         for i in apisDict:
-            print(i)
-            print(type(i))
-            print(i['apiSortNo'])
             Apis.objects.filter(id=i['id']).update(**i)
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
@@ -95,7 +93,7 @@ def addApi(request):
     if request.method == 'POST':
         apiStr = str(request.body, encoding='utf-8')
         apiDict = eval(apiStr.replace('\\n', ''))
-        print(apiDict)
+        print('新增接口：apiDict', apiDict)
         # 入库
         Apis.objects.create(**apiDict)
         res = [{'code': 1000, 'msg': 'success'}]
