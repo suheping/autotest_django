@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # 解决跨域
     'corsheaders',
     'backend',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

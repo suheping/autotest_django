@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 import json
 import urllib
 from backend.models import ApiGroup, Apis
@@ -12,6 +14,7 @@ def index(request):
     return HttpResponse("hello")
 
 
+@api_view(['GET'])
 def getApiGroup(request, projId):
     '''获取接口分组
     '''
