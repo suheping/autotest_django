@@ -4,7 +4,6 @@ from django.db import models
 
 
 class ApiGroup(models.Model):
-    # projId = models.IntegerField('项目id', null=False, unique=True)
     projId = models.BigIntegerField('项目id', null=False, unique=True)
     apiGroupJson = models.CharField(
         '接口分组信息', null=False, max_length=4096,
