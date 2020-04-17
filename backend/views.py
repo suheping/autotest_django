@@ -100,16 +100,3 @@ def addApi(request):
         Apis.objects.create(**apiDict)
         res = [{'code': 1000, 'msg': 'success'}]
         return HttpResponse(json.dumps(res, ensure_ascii=False), content_type="application/json")
-
-
-@api_view(['GET', 'POST'])
-def apiGroup(request):
-    if request.method == 'GET':
-        data = ApiGroup.objects.all()
-        serializer = ApiGroupSerializer(data=data)
-        if serializer.is_valid():
-            return JsonResponse(serializer.validated_data, safe=False)
-        else:
-            return HttpResponse('error')
-    elif request.method == 'POST':
-        return HttpResponse('post')

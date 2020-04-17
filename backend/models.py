@@ -36,3 +36,5 @@ class Apis(models.Model):
         verbose_name = '接口表'
         # 同项目同一分组下 接口名称唯一
         unique_together = (("projId", "apiGroupId", "apiName"))
+        # 同项目同一分组下，排序值唯一
+        unique_together = (("projId", "apiGroupId", "apiSortNo"))

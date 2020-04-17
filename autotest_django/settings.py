@@ -41,7 +41,16 @@ INSTALLED_APPS = [
     'corsheaders',
     'backend',
     'rest_framework',
+    'django_filters',
 ]
+
+REST_FRAMEWORK = {
+    # 全局默认配置过滤
+    'DEFAULT_FILTER_BACKENDS':
+    ('django_filters.rest_framework.DjangoFilterBackend',),
+    'EXCEPTION_HANDLER':
+    'autotest_django.util.exceptions.customExceptionHandler'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

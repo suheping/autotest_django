@@ -34,7 +34,5 @@ urlpatterns = [
     path('getApi/<int:projId>/<int:apiGroupId>/', views.getApi),
     path('updateApi/', views.updateApi),
     path('addApi/', views.addApi),
-    path('apiGroup/', views.apiGroup),
-    path('api/', include('backend.urls')),
     url(r'^', include(router.urls)),
 ]
