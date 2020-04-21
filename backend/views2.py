@@ -1,13 +1,10 @@
-from rest_framework import viewsets
-# from rest_framework import mixins
-# from backend.util.customModelViewSet import CustomModelViewSet
+from rest_framework import viewsets, filters
 from autotest_django.util.customModelViewSet import CustomModelViewSet
 from backend.models import ApiGroup, Apis
 from backend.serializers import ApiGroupSerializer, APiSerializer
-# from rest_framework.response import Response
 from backend.filter import apiFilter
 from django_filters import rest_framework
-from rest_framework import views
+# from rest_framework_extensions.mixins import ListUpdateModelMixin
 
 
 class apiGroupViewSet(CustomModelViewSet,
@@ -22,5 +19,9 @@ class apiViewSet(CustomModelViewSet,
                  viewsets.GenericViewSet):
     queryset = Apis.objects.all()
     serializer_class = APiSerializer
-    filter_backends = (rest_framework.DjangoFilterBackend,)
+    # filter_backends = (rest_framework.DjangoFilterBackend,)
+    filter_backends = (rest_framework.DjangoFilterBackend,
+                       filters.OrderingFilter,)
     filter_class = apiFilter
+    ordering_fields = ['apiSortNo']
+    ordering = 'apiSortNo'
