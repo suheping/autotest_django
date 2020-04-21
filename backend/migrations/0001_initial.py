@@ -14,7 +14,8 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='ApiGroup',
             fields=[
-                ('id', models.IntegerField(auto_created=True, primary_key=True, serialize=False)),
+                ('id', models.IntegerField(auto_created=True,
+                                           primary_key=True, serialize=False)),
                 ('parentApiGroupId', models.IntegerField()),
                 ('projId', models.IntegerField()),
                 ('apiGroupName', models.CharField(max_length=32)),

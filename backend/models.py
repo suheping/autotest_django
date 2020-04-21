@@ -27,14 +27,12 @@ class Apis(models.Model):
         '请求头部信息，json格式', max_length=4096, default='[]')
     apiQuerys = models.CharField(
         '请求参数信息，json格式', max_length=4096, default='[]')
-    apiBody = models.CharField(
-        '请求body信息，json格式', max_length=4096, default='[]')
-    apiResp = models.CharField(
-        '请求返回信息示例，json格式', max_length=4096, default='[]')
+    apiBody = models.TextField(
+        '请求body信息，json格式', max_length=409600, default='[]')
+    apiResp = models.TextField(
+        '请求返回信息示例，json格式', max_length=409600, default='[]')
 
     class Meta:
         verbose_name = '接口表'
-        # 同项目同一分组下 接口名称唯一
-        unique_together = (("projId", "apiGroupId", "apiName"))
         # 同项目同一分组下，排序值唯一
         unique_together = (("projId", "apiGroupId", "apiSortNo"))
