@@ -80,10 +80,14 @@ CORS_ALLOW_METHODS = (
     'PUT',
     'VIEW',
 )
+# CORS_ALLOW_HEADERS = (
+#     'x-token',
+#     'content-type',
+#     'contentType',
+# )
+
 CORS_ALLOW_HEADERS = (
-    'x-token',
-    'content-type',
-    'contentType',
+    '*',
 )
 
 ROOT_URLCONF = 'autotest_django.urls'
