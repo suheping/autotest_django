@@ -31,7 +31,7 @@ django-cors-headers==3.2.1
 django-interactive==1.0.6
 django-rest-framework==0.1.0
 django-rest-swagger==2.2.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 docx2pdf==0.1.4
 entrypoints==0.3
 enum34==1.1.9
