@@ -67,7 +67,7 @@ more-itertools==8.0.2
 mutagen==1.42.0
 mysqlclient==1.4.6
 namedlist==1.7
-nbconvert==5.6.1
+nbconvert==6.5.1
 nbformat==4.4.0
 neo4j==1.7.5
 neobolt==1.7.15
